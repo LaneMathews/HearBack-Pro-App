@@ -1,0 +1,1191 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Node-RED UI Builder - Blank template</title>
+    <meta name="description" content="Node-RED UI Builder - Blank template">
+    <link rel="icon" href="./images/node-blue.ico">
+    <script src="../uibuilder/vendor/socket.io/socket.io.js"></script>
+    <script src="./uibuilderfe.min.js"></script>
+    <script src="../uibuilder/vendor/jquery/dist/jquery.min.js"></script>
+    <script src="./input-knob.js"></script>
+    <script src="./index.js"></script>
+    <link type="text/css" rel="stylesheet" href="./index.css" media="all">
+</head>
+
+<body>
+    
+    <pre id="msg" class="syntax-highlight">Waiting for a message from Node-RED</pre>
+    
+<section>
+
+<div class="pad"></div>
+
+<!-- Mix Window Start -->
+<div class="mixWindow">
+
+<!-- Mixer Start -->
+<div class="mixer">
+    
+    <!-- Top Start -->
+    <div class="top">
+        <div class="logo">
+            <div>
+                <div class="screen">
+                    <input type="text" id="mixername" name="mixerID" placeholder="MIXER NAME" maxlength="12" onclick="this.select();" oninput="let p=this.selectionStart;this.value=this.value.toUpperCase();this.setSelectionRange(p, p);">
+                    <p class="displayMode" id="log2" style="padding: 4px">MODE</p>
+                </div>
+            </div>
+            <img class="jack" src="images/logo.png" width="200px">
+        </div>
+    </div>
+    <!-- Top End -->
+
+    <!-- Row 1 Start -->
+    <div class="row1">
+        <div class="channelKnob">
+            <div>
+                <div class="channelname" id="fader1name" style="width: 80px">
+                    CHANNEL A
+                </div>
+            </div>
+            <div>
+                <span>
+                    <input type="range" class="input-knob" id="fader1" min="0" max="255" step="1" data-height="64" data-width="64" data-sprites="200" data-src="images/volknob.png" data-topic="level" oninput="uibuilder.send({'topic': this.dataset.topic, 'payload': this.value})" onchange="uibuilder.send({'topic': this.dataset.topic, 'payload': this.value})"/>
+                    <input type="range" class="input-knob" id="panknob1" min="0" max="255" step="1" data-height="64" data-width="64" data-sprites="200" data-src="images/panknob.png" data-topic="panlevel" oninput="uibuilder.send({'topic': this.dataset.topic, 'payload': this.value})" onchange="uibuilder.send({'topic': this.dataset.topic, 'payload': this.value})"/>
+                    <input type="range" class="input-knob" id="widthknob1" min="0" max="255" step="1" data-height="64" data-width="64" data-sprites="200" data-src="images/panknob.png" data-topic="widthlevel" oninput="uibuilder.send({'topic': this.dataset.topic, 'payload': this.value})" onchange="uibuilder.send({'topic': this.dataset.topic, 'payload': this.value})"/>
+                </span>
+            </div>
+        </div>
+        <div class="channelKnob">
+            <div>
+                <div class="channelname" id="fader2name">
+                    CHANNEL B
+                </div>
+            </div>
+            <div>
+                <span>
+                    <input type="range" class="input-knob" id="fader2" min="0" max="255" step="1" data-height="64" data-width="64" data-sprites="200" data-src="images/volknob.png" data-topic="level" oninput="uibuilder.send({'topic': this.dataset.topic, 'payload': this.value})" onchange="uibuilder.send({'topic': this.dataset.topic, 'payload': this.value})"/>
+                    <input type="range" class="input-knob" id="panknob2" min="0" max="255" step="1" data-height="64" data-width="64" data-sprites="200" data-src="images/panknob.png" data-topic="panlevel" oninput="uibuilder.send({'topic': this.dataset.topic, 'payload': this.value})" onchange="uibuilder.send({'topic': this.dataset.topic, 'payload': this.value})"/>
+                    <input type="range" class="input-knob" id="widthknob2" min="0" max="255" step="1" data-height="64" data-width="64" data-sprites="200" data-src="images/panknob.png" data-topic="widthlevel" oninput="uibuilder.send({'topic': this.dataset.topic, 'payload': this.value})" onchange="uibuilder.send({'topic': this.dataset.topic, 'payload': this.value})"/>
+                </span>
+            </div>
+        </div>
+        <div class="channelKnob">
+            <div>
+                <div class="channelname" id="fader3name">
+                    CHANNEL C
+                </div>
+            </div>
+            <div>
+                <span>
+                    <input type="range" class="input-knob" id="fader3" min="0" max="255" step="1" data-height="64" data-width="64" data-sprites="200" data-src="images/volknob.png" oninput="uibuilder.send({'topic': this.dataset.topic, 'payload': this.value})" onchange="uibuilder.send({'topic': this.dataset.topic, 'payload': this.value})"/>
+                    <input type="range" class="input-knob" id="panknob3" min="0" max="255" step="1" data-height="64" data-width="64" data-sprites="200" data-src="images/panknob.png" oninput="uibuilder.send({'topic': this.dataset.topic, 'payload': this.value})" onchange="uibuilder.send({'topic': this.dataset.topic, 'payload': this.value})"/>                
+                    <input type="range" class="input-knob" id="widthknob3" min="0" max="255" step="1" data-height="64" data-width="64" data-sprites="200" data-src="images/panknob.png" oninput="uibuilder.send({'topic': this.dataset.topic, 'payload': this.value})" onchange="uibuilder.send({'topic': this.dataset.topic, 'payload': this.value})"/> 
+                </span>
+            </div>
+        </div>
+        <div class="channelKnob">
+            <div>
+                <div class="channelname" id="fader4name">
+                    CHANNEL D
+                </div>
+            </div>
+            <div>
+                <span>
+                    <input type="range" class="input-knob" id="fader4" min="0" max="255" step="1" data-height="64" data-width="64" data-sprites="200" data-src="images/volknob.png" oninput="uibuilder.send({'topic': this.dataset.topic, 'payload': this.value})" onchange="uibuilder.send({'topic': this.dataset.topic, 'payload': this.value})"/>
+                    <input type="range" class="input-knob" id="panknob4" min="0" max="255" step="1" data-height="64" data-width="64" data-sprites="200" data-src="images/panknob.png" oninput="uibuilder.send({'topic': this.dataset.topic, 'payload': this.value})" onchange="uibuilder.send({'topic': this.dataset.topic, 'payload': this.value})"/>
+                    <input type="range" class="input-knob" id="widthknob4" min="0" max="255" step="1" data-height="64" data-width="64" data-sprites="200" data-src="images/panknob.png" oninput="uibuilder.send({'topic': this.dataset.topic, 'payload': this.value})" onchange="uibuilder.send({'topic': this.dataset.topic, 'payload': this.value})"/> 
+                </span>
+            </div>
+        </div>
+    </div>
+    <!-- Row 1 End -->
+    
+    <!-- Row 2 Start -->
+    <div class="row2">
+        <div class="channelKnob">
+            <div>
+                <div class="channelname" id="fader5name">
+                    CHANNEL E
+                </div>
+            </div>
+            <div>
+                <span>
+                    <input type="range" class="input-knob" id="fader5" min="0" max="255" step="1" data-height="64" data-width="64" data-sprites="200" data-src="images/volknob.png" oninput="uibuilder.send({'topic': this.dataset.topic, 'payload': this.value})" onchange="uibuilder.send({'topic': this.dataset.topic, 'payload': this.value})"/>
+                    <input type="range" class="input-knob" id="panknob5" min="0" max="255" step="1" data-height="64" data-width="64" data-sprites="200" data-src="images/panknob.png" oninput="uibuilder.send({'topic': this.dataset.topic, 'payload': this.value})" onchange="uibuilder.send({'topic': this.dataset.topic, 'payload': this.value})"/>
+                    <input type="range" class="input-knob" id="widthknob5" min="0" max="255" step="1" data-height="64" data-width="64" data-sprites="200" data-src="images/panknob.png" oninput="uibuilder.send({'topic': this.dataset.topic, 'payload': this.value})" onchange="uibuilder.send({'topic': this.dataset.topic, 'payload': this.value})"/> 
+                </span>
+            </div>
+        </div>
+        <div class="channelKnob">
+            <div>
+                <div class="channelname" id="fader6name">
+                    CHANNEL F
+                </div>
+            </div>
+            <div>
+                <span>
+                    <input type="range" class="input-knob" id="fader6" min="0" max="255" step="1" data-height="64" data-width="64" data-sprites="200" data-src="images/volknob.png" oninput="uibuilder.send({'topic': this.dataset.topic, 'payload': this.value})" onchange="uibuilder.send({'topic': this.dataset.topic, 'payload': this.value})"/>
+                    <input type="range" class="input-knob" id="panknob6" min="0" max="255" step="1" data-height="64" data-width="64" data-sprites="200" data-src="images/panknob.png" oninput="uibuilder.send({'topic': this.dataset.topic, 'payload': this.value})" onchange="uibuilder.send({'topic': this.dataset.topic, 'payload': this.value})"/>
+                    <input type="range" class="input-knob" id="widthknob6" min="0" max="255" step="1" data-height="64" data-width="64" data-sprites="200" data-src="images/panknob.png" oninput="uibuilder.send({'topic': this.dataset.topic, 'payload': this.value})" onchange="uibuilder.send({'topic': this.dataset.topic, 'payload': this.value})"/> 
+                </span>
+            </div>
+        </div>
+        <div class="channelKnob">
+            <div>
+                <div class="channelname" id="fader7name">
+                    CHANNEL G
+                </div>
+            </div>
+            <div>
+                <span>
+                    <input type="range" class="input-knob" id="fader7" min="0" max="255" step="1" data-height="64" data-width="64" data-sprites="200" data-src="images/volknob.png" oninput="uibuilder.send({'topic': this.dataset.topic, 'payload': this.value})" onchange="uibuilder.send({'topic': this.dataset.topic, 'payload': this.value})"/>
+                    <input type="range" class="input-knob" id="panknob7" min="0" max="255" step="1" data-height="64" data-width="64" data-sprites="200" data-src="images/panknob.png" oninput="uibuilder.send({'topic': this.dataset.topic, 'payload': this.value})" onchange="uibuilder.send({'topic': this.dataset.topic, 'payload': this.value})"/>
+                    <input type="range" class="input-knob" id="widthknob7" min="0" max="255" step="1" data-height="64" data-width="64" data-sprites="200" data-src="images/panknob.png" oninput="uibuilder.send({'topic': this.dataset.topic, 'payload': this.value})" onchange="uibuilder.send({'topic': this.dataset.topic, 'payload': this.value})"/> 
+                </span>
+            </div>
+        </div>
+        <div class="channelKnob">
+            <div>
+                <div class="channelname" id="fader8name">
+                    CHANNEL H
+                </div>
+            </div>
+            <div>
+                <span>
+                    <input type="range" class="input-knob" id="fader8" min="0" max="255" step="1" data-height="64" data-width="64" data-sprites="200" data-src="images/volknob.png" oninput="uibuilder.send({'topic': this.dataset.topic, 'payload': this.value})" onchange="uibuilder.send({'topic': this.dataset.topic, 'payload': this.value})"/>
+                    <input type="range" class="input-knob" id="panknob8" min="0" max="255" step="1" data-height="64" data-width="64" data-sprites="200" data-src="images/panknob.png" oninput="uibuilder.send({'topic': this.dataset.topic, 'payload': this.value})" onchange="uibuilder.send({'topic': this.dataset.topic, 'payload': this.value})"/>
+                    <input type="range" class="input-knob" id="widthknob8" min="0" max="255" step="1" data-height="64" data-width="64" data-sprites="200" data-src="images/panknob.png" oninput="uibuilder.send({'topic': this.dataset.topic, 'payload': this.value})" onchange="uibuilder.send({'topic': this.dataset.topic, 'payload': this.value})"/> 
+                </span>
+            </div>
+        </div>
+    </div>
+    <!-- Row 2 End -->
+    
+    <!-- Row 3 Start -->
+    <div class="row3">
+        <div class="channelKnob">
+            <div>
+                <div class="channelname" id="fader9name">
+                    CHANNEL I
+                </div>
+            </div>
+            <div>
+                <span>
+                    <input type="range" class="input-knob" id="fader9" min="0" max="255" step="1" data-height="64" data-width="64" data-sprites="200" data-src="images/volknob.png" oninput="uibuilder.send({'topic': this.dataset.topic, 'payload': this.value})" onchange="uibuilder.send({'topic': this.dataset.topic, 'payload': this.value})"/>
+                    <input type="range" class="input-knob" id="panknob9" min="0" max="255" step="1" data-height="64" data-width="64" data-sprites="200" data-src="images/panknob.png" oninput="uibuilder.send({'topic': this.dataset.topic, 'payload': this.value})" onchange="uibuilder.send({'topic': this.dataset.topic, 'payload': this.value})"/>
+                    <input type="range" class="input-knob" id="widthknob9" min="0" max="255" step="1" data-height="64" data-width="64" data-sprites="200" data-src="images/panknob.png" oninput="uibuilder.send({'topic': this.dataset.topic, 'payload': this.value})" onchange="uibuilder.send({'topic': this.dataset.topic, 'payload': this.value})"/> 
+                </span>
+            </div>
+        </div>
+        <div class="channelKnob">
+            <div>
+                <div class="channelname" id="fader10name">
+                    CHANNEL J
+                </div>
+            </div>
+            <div>
+                <span>
+                    <input type="range" class="input-knob" id="fader10" min="0" max="255" step="1" data-height="64" data-width="64" data-sprites="200" data-src="images/volknob.png" oninput="uibuilder.send({'topic': this.dataset.topic, 'payload': this.value})" onchange="uibuilder.send({'topic': this.dataset.topic, 'payload': this.value})"/>
+                    <input type="range" class="input-knob" id="panknob10" min="0" max="255" step="1" data-height="64" data-width="64" data-sprites="200" data-src="images/panknob.png" oninput="uibuilder.send({'topic': this.dataset.topic, 'payload': this.value})" onchange="uibuilder.send({'topic': this.dataset.topic, 'payload': this.value})"/>
+                    <input type="range" class="input-knob" id="widthknob10" min="0" max="255" step="1" data-height="64" data-width="64" data-sprites="200" data-src="images/panknob.png" oninput="uibuilder.send({'topic': this.dataset.topic, 'payload': this.value})" onchange="uibuilder.send({'topic': this.dataset.topic, 'payload': this.value})"/> 
+                </span>
+            </div>
+        </div>
+        <div class="channelKnob">
+            <div>
+                <div class="channelname" id="fader11name">
+                    CHANNEL K
+                </div>
+            </div>
+            <div>
+                <span>
+                    <input type="range" class="input-knob" id="fader11" min="0" max="255" step="1" data-height="64" data-width="64" data-sprites="200" data-src="images/volknob.png" oninput="uibuilder.send({'topic': this.dataset.topic, 'payload': this.value})" onchange="uibuilder.send({'topic': this.dataset.topic, 'payload': this.value})"/>
+                    <input type="range" class="input-knob" id="panknob11" min="0" max="255" step="1" data-height="64" data-width="64" data-sprites="200" data-src="images/panknob.png" oninput="uibuilder.send({'topic': this.dataset.topic, 'payload': this.value})" onchange="uibuilder.send({'topic': this.dataset.topic, 'payload': this.value})"/>
+                    <input type="range" class="input-knob" id="widthknob11" min="0" max="255" step="1" data-height="64" data-width="64" data-sprites="200" data-src="images/panknob.png" oninput="uibuilder.send({'topic': this.dataset.topic, 'payload': this.value})" onchange="uibuilder.send({'topic': this.dataset.topic, 'payload': this.value})"/> 
+                </span>
+            </div>
+        </div>
+        <div class="channelKnob">
+            <div>
+                <div class="channelname" id="fader12name">
+                    CHANNEL L
+                </div>
+            </div>
+            <div>
+                <span>
+                    <input type="range" class="input-knob" id="fader12" min="0" max="255" step="1" data-height="64" data-width="64" data-sprites="200" data-src="images/volknob.png" oninput="uibuilder.send({'topic': this.dataset.topic, 'payload': this.value})" onchange="uibuilder.send({'topic': this.dataset.topic, 'payload': this.value})"/>
+                    <input type="range" class="input-knob" id="panknob12" min="0" max="255" step="1" data-height="64" data-width="64" data-sprites="200" data-src="images/panknob.png" oninput="uibuilder.send({'topic': this.dataset.topic, 'payload': this.value})" onchange="uibuilder.send({'topic': this.dataset.topic, 'payload': this.value})"/>
+                    <input type="range" class="input-knob" id="widthknob12" min="0" max="255" step="1" data-height="64" data-width="64" data-sprites="200" data-src="images/panknob.png" oninput="uibuilder.send({'topic': this.dataset.topic, 'payload': this.value})" onchange="uibuilder.send({'topic': this.dataset.topic, 'payload': this.value})"/> 
+                </span>
+            </div>
+        </div>
+    </div>
+    <!-- Row 3 End -->
+    
+    <!-- Row 4 Start -->
+    <div class="row4">
+        <div class="channelKnob">
+            <div>
+                <div class="channelname" id="fader13name">
+                    CHANNEL M
+                </div>
+            </div>
+            <div>
+                <span>
+                    <input type="range" class="input-knob" id="fader13" min="0" max="255" step="1" data-height="64" data-width="64" data-sprites="200" data-src="images/volknob.png" oninput="uibuilder.send({'topic': this.dataset.topic, 'payload': this.value})" onchange="uibuilder.send({'topic': this.dataset.topic, 'payload': this.value})"/>
+                    <input type="range" class="input-knob" id="panknob13" min="0" max="255" step="1" data-height="64" data-width="64" data-sprites="200" data-src="images/panknob.png" oninput="uibuilder.send({'topic': this.dataset.topic, 'payload': this.value})" onchange="uibuilder.send({'topic': this.dataset.topic, 'payload': this.value})"/>
+                    <input type="range" class="input-knob" id="widthknob13" min="0" max="255" step="1" data-height="64" data-width="64" data-sprites="200" data-src="images/panknob.png" oninput="uibuilder.send({'topic': this.dataset.topic, 'payload': this.value})" onchange="uibuilder.send({'topic': this.dataset.topic, 'payload': this.value})"/> 
+                </span>
+            </div>
+        </div>
+        <div class="channelKnob">
+            <div>
+                <div class="channelname" id="fader14name">
+                    CHANNEL N
+                </div>
+            </div>
+            <div>
+                <span>
+                    <input type="range" class="input-knob" id="fader14" min="0" max="255" step="1" data-height="64" data-width="64" data-sprites="200" data-src="images/volknob.png" oninput="uibuilder.send({'topic': this.dataset.topic, 'payload': this.value})" onchange="uibuilder.send({'topic': this.dataset.topic, 'payload': this.value})"/>
+                    <input type="range" class="input-knob" id="panknob14" min="0" max="255" step="1" data-height="64" data-width="64" data-sprites="200" data-src="images/panknob.png" oninput="uibuilder.send({'topic': this.dataset.topic, 'payload': this.value})" onchange="uibuilder.send({'topic': this.dataset.topic, 'payload': this.value})"/>
+                    <input type="range" class="input-knob" id="widthknob14" min="0" max="255" step="1" data-height="64" data-width="64" data-sprites="200" data-src="images/panknob.png" oninput="uibuilder.send({'topic': this.dataset.topic, 'payload': this.value})" onchange="uibuilder.send({'topic': this.dataset.topic, 'payload': this.value})"/> 
+                </span>
+            </div>
+        </div>
+        <div class="channelKnob">
+            <div>
+                <div class="channelname" id="fader15name">
+                    CHANNEL O
+                </div>
+            </div>
+            <div>
+                <span>
+                    <input type="range" class="input-knob" id="fader15" min="0" max="255" step="1" data-height="64" data-width="64" data-sprites="200" data-src="images/volknob.png" oninput="uibuilder.send({'topic': this.dataset.topic, 'payload': this.value})" onchange="uibuilder.send({'topic': this.dataset.topic, 'payload': this.value})"/>
+                    <input type="range" class="input-knob" id="panknob15" min="0" max="255" step="1" data-height="64" data-width="64" data-sprites="200" data-src="images/panknob.png" oninput="uibuilder.send({'topic': this.dataset.topic, 'payload': this.value})" onchange="uibuilder.send({'topic': this.dataset.topic, 'payload': this.value})"/>
+                    <input type="range" class="input-knob" id="widthknob15" min="0" max="255" step="1" data-height="64" data-width="64" data-sprites="200" data-src="images/panknob.png" oninput="uibuilder.send({'topic': this.dataset.topic, 'payload': this.value})" onchange="uibuilder.send({'topic': this.dataset.topic, 'payload': this.value})"/> 
+                </span>
+            </div>
+        </div>
+        <div class="channelKnob">
+            <div>
+                <div class="channelname" id="fader16name">
+                    CHANNEL P
+                </div>
+            </div>
+            <div>
+                <span>
+                    <input type="range" class="input-knob" id="fader16" min="0" max="255" step="1" data-height="64" data-width="64" data-sprites="200" data-src="images/volknob.png" oninput="uibuilder.send({'topic': this.dataset.topic, 'payload': this.value})" onchange="uibuilder.send({'topic': this.dataset.topic, 'payload': this.value})"/>
+                    <input type="range" class="input-knob" id="panknob16" min="0" max="255" step="1" data-height="64" data-width="64" data-sprites="200" data-src="images/panknob.png" oninput="uibuilder.send({'topic': this.dataset.topic, 'payload': this.value})" onchange="uibuilder.send({'topic': this.dataset.topic, 'payload': this.value})"/>
+                    <input type="range" class="input-knob" id="widthknob16" min="0" max="255" step="1" data-height="64" data-width="64" data-sprites="200" data-src="images/panknob.png" oninput="uibuilder.send({'topic': this.dataset.topic, 'payload': this.value})" onchange="uibuilder.send({'topic': this.dataset.topic, 'payload': this.value})"/> 
+                </span>
+            </div>
+        </div>
+    </div>
+    <!-- Row 4 End -->
+
+    <!-- Bottom Start -->
+    <div class="bottom">
+        
+        <!-- Pan Start -->
+        <div class="bottomPan">
+            <div>
+                <div class="bottomText">
+                    PAN
+                </div>
+            </div>
+            <div>
+                <span>
+                    <input type="checkbox" id="pan" class="input-switch" data-src="images/panswitch.png" data-diameter="24" oninput="panFunction()"/>
+                </span>
+            </div>
+        </div>
+        <!-- Pan End -->
+        
+        <!-- Aux Start -->
+        <div class="bottomAux">
+            <div>
+                <div class="bottomText">
+                    AUX
+                </div>
+            </div>
+            <div>
+                <span>
+                    <input type="checkbox" id="aux" class="input-switch" data-src="images/auxswitch.png" data-diameter="24" oninput="auxFunction()"/>
+                </span>
+            </div>
+        </div>
+        <!-- Aux End -->
+        
+        <!-- Master Start -->
+        <div class="bottomMaster">
+            <div>
+                <div class="bottomText" id="mastertext">
+                    MASTER
+                </div>
+            </div>
+            <div>
+                <span>
+                    <input type="range" class="input-knob" id="masterfader" min="0" max="255" step="1" data-height="96" data-width="96" data-sprites="200" data-src="images/volknob.png" oninput="uibuilder.send({'topic': 'masterlevel', 'payload': this.value})" onchange="uibuilder.send({'topic': 'masterlevel', 'payload': this.value})"/>
+                    <input type="range" class="input-knob" id="masteraux" min="0" max="255" step="1" data-height="96" data-width="96" data-sprites="200" data-src="images/volknob.png" oninput="uibuilder.send({'topic': 'masterauxlevel', 'payload': this.value})" onchange="uibuilder.send({'topic': 'masterauxlevel', 'payload': this.value})"/>
+                </span>
+            </div>
+        </div>
+        <!-- Master End -->
+        
+        <!-- Preset Start -->
+        <div class="bottomPreset">
+            <div>
+                <div class="bottomText">
+                PRESET
+                </div>
+            </div>
+            <div>
+                <span>
+                    <input type="checkbox" id="preset" class="input-switch" data-src="images/presetswitch.png" oninput="presetFunction()" data-diameter="24"/>
+                </span>
+            </div>
+            <div class="presetLight" style="margin-top: 2px">
+                <input type="radio" style="margin: 0" id="presetCheck1" name="group1" class="input-switch" data-src="images/presetlight.png" data-diameter="8"/>
+                <input type="radio" style="margin: 0" id="presetCheck2" name="group1" class="input-switch" data-src="images/presetlight.png" data-diameter="8"/>
+                <input type="radio" style="margin: 0" id="presetCheck3" name="group1" class="input-switch" data-src="images/presetlight.png" data-diameter="8"/>
+                <input type="radio" style="margin: 0" id="presetCheck4" name="group1" class="input-switch" data-src="images/presetlight.png" data-diameter="8"/>
+            </div>
+        </div>
+        <!-- Preset End -->
+        
+        <!-- Intercom Start -->
+        <div class="bottomIntercom">
+            <div>
+                <div class="bottomText">
+                INTERCOM
+                </div>
+            </div>
+            <div>
+                <span>
+                    <input type="checkbox" id="intercom" class="input-switch" data-src="images/intercomswitch.png" data-diameter="24"/>
+                </span>
+            </div>
+        </div>
+        <!-- Intercom End -->
+        
+    </div>
+    <!-- Bottom End -->
+    
+</div>
+<!--Mixer End -->
+
+</div>
+<!-- Mix Window End -->
+
+<div class="pad2">
+<!-- <div class="drop-down"> -->
+    <div class="channelTab">
+        <button id="tabLink1" class="active">CHANNEL ASSIGNMENTS</button>
+        <button id="tabLink2">EDIT SUBMIXES</button>
+    </div>
+    <table id="channelTable">
+        <tr class="tabHead">
+            <th id="Cell1">KNOB</th>
+            <th id="Cell2">SEARCH</th>
+            <th id="Cell3">LIST</th>
+            <th id="Cell4">ACTIVE</th>
+        </tr>
+        <tr class="tabRow">
+            <td class="knobCell">1</td>
+            <td class="inputCell">
+                <input type="text" class="userInput" placeholder="CHANNEL A" maxlength="9">
+            </td>
+            <td class="selectCell">
+                <select class="selectBox" id="assKnob1" data-topic="1">
+                    <option id="option1" value="0x00">CHANNEL01</option>
+                    <option id="option2" value="0x01">CHANNEL02</option>
+                    <option id="option3" value="0x02">CHANNEL03</option>
+                    <option id="option4" value="0x03">CHANNEL04</option>
+                    <option id="option5" value="0x04">CHANNEL05</option>
+                    <option id="option6" value="0x05">CHANNEL06</option>
+                    <option id="option7" value="0x06">CHANNEL07</option>
+                    <option id="option8" value="0x07">CHANNEL08</option>
+                    <option id="option9" value="0x08">CHANNEL09</option>
+                    <option id="option10" value="0x09">CHANNEL10</option>
+                    <option id="option11" value="0x0a">CHANNEL11</option>
+                    <option id="option12" value="0x0b">CHANNEL12</option>
+                    <option id="option13" value="0x0c">CHANNEL13</option>
+                    <option id="option14" value="0x0d">CHANNEL14</option>
+                    <option id="option15" value="0x0e">CHANNEL15</option>
+                    <option id="option16" value="0x0f">CHANNEL16</option>
+                    <option id="option17" value="0x10">CHANNEL17</option>
+                    <option id="option18" value="0x11">CHANNEL18</option>
+                    <option id="option19" value="0x12">CHANNEL19</option>
+                    <option id="option20" value="0x13">CHANNEL20</option>
+                    <option id="option21" value="0x14">CHANNEL21</option>
+                    <option id="option22" value="0x15">CHANNEL22</option>
+                    <option id="option23" value="0x16">CHANNEL23</option>
+                    <option id="option24" value="0x17">CHANNEL24</option>
+                    <option id="option25" value="0x18">CHANNEL25</option>
+                    <option id="option26" value="0x19">CHANNEL26</option>
+                    <option id="option27" value="0x1a">CHANNEL27</option>
+                    <option id="option28" value="0x1b">CHANNEL28</option>
+                    <option id="option29" value="0x1c">CHANNEL29</option>
+                    <option id="option30" value="0x1d">CHANNEL30</option>
+                    <option id="option31" value="0x1e">CHANNEL31</option>
+                    <option id="option32" value="0x1f">CHANNEL32</option>
+                </select>
+            </td>
+            <td class="checkboxCell">
+                <input type="checkbox" id="assCheck1">
+            </td>
+        </tr>
+        <tr class="tabRow">
+            <td class="knobCell">2</td>
+            <td class="inputCell">
+                <input type="text" class="userInput" placeholder="CHANNEL A" maxlength="9">
+            </td>
+            <td class="selectCell">
+                <select class="selectBox" id="assKnob2" data-topic="2">
+                    <option id="option1" value="0x00">CHANNEL01</option>
+                    <option id="option2" value="0x01">CHANNEL02</option>
+                    <option id="option3" value="0x02">CHANNEL03</option>
+                    <option id="option4" value="0x03">CHANNEL04</option>
+                    <option id="option5" value="0x04">CHANNEL05</option>
+                    <option id="option6" value="0x05">CHANNEL06</option>
+                    <option id="option7" value="0x06">CHANNEL07</option>
+                    <option id="option8" value="0x07">CHANNEL08</option>
+                    <option id="option9" value="0x08">CHANNEL09</option>
+                    <option id="option10" value="0x09">CHANNEL10</option>
+                    <option id="option11" value="0x0a">CHANNEL11</option>
+                    <option id="option12" value="0x0b">CHANNEL12</option>
+                    <option id="option13" value="0x0c">CHANNEL13</option>
+                    <option id="option14" value="0x0d">CHANNEL14</option>
+                    <option id="option15" value="0x0e">CHANNEL15</option>
+                    <option id="option16" value="0x0f">CHANNEL16</option>
+                    <option id="option17" value="0x10">CHANNEL17</option>
+                    <option id="option18" value="0x11">CHANNEL18</option>
+                    <option id="option19" value="0x12">CHANNEL19</option>
+                    <option id="option20" value="0x13">CHANNEL20</option>
+                    <option id="option21" value="0x14">CHANNEL21</option>
+                    <option id="option22" value="0x15">CHANNEL22</option>
+                    <option id="option23" value="0x16">CHANNEL23</option>
+                    <option id="option24" value="0x17">CHANNEL24</option>
+                    <option id="option25" value="0x18">CHANNEL25</option>
+                    <option id="option26" value="0x19">CHANNEL26</option>
+                    <option id="option27" value="0x1a">CHANNEL27</option>
+                    <option id="option28" value="0x1b">CHANNEL28</option>
+                    <option id="option29" value="0x1c">CHANNEL29</option>
+                    <option id="option30" value="0x1d">CHANNEL30</option>
+                    <option id="option31" value="0x1e">CHANNEL31</option>
+                    <option id="option32" value="0x1f">CHANNEL32</option>
+                </select>
+            </td>
+            <td class="checkboxCell">
+                <input type="checkbox" id="assCheck2">
+            </td>
+        </tr>
+        <tr class="tabRow">
+            <td class="knobCell">3</td>
+            <td class="inputCell">
+                <input type="text" class="userInput" placeholder="CHANNEL A" maxlength="9">
+            </td>
+            <td class="selectCell">
+                <select class="selectBox" id="assKnob3" data-topic="3">
+                    <option id="option1" value="0x00">CHANNEL01</option>
+                    <option id="option2" value="0x01">CHANNEL02</option>
+                    <option id="option3" value="0x02">CHANNEL03</option>
+                    <option id="option4" value="0x03">CHANNEL04</option>
+                    <option id="option5" value="0x04">CHANNEL05</option>
+                    <option id="option6" value="0x05">CHANNEL06</option>
+                    <option id="option7" value="0x06">CHANNEL07</option>
+                    <option id="option8" value="0x07">CHANNEL08</option>
+                    <option id="option9" value="0x08">CHANNEL09</option>
+                    <option id="option10" value="0x09">CHANNEL10</option>
+                    <option id="option11" value="0x0a">CHANNEL11</option>
+                    <option id="option12" value="0x0b">CHANNEL12</option>
+                    <option id="option13" value="0x0c">CHANNEL13</option>
+                    <option id="option14" value="0x0d">CHANNEL14</option>
+                    <option id="option15" value="0x0e">CHANNEL15</option>
+                    <option id="option16" value="0x0f">CHANNEL16</option>
+                    <option id="option17" value="0x10">CHANNEL17</option>
+                    <option id="option18" value="0x11">CHANNEL18</option>
+                    <option id="option19" value="0x12">CHANNEL19</option>
+                    <option id="option20" value="0x13">CHANNEL20</option>
+                    <option id="option21" value="0x14">CHANNEL21</option>
+                    <option id="option22" value="0x15">CHANNEL22</option>
+                    <option id="option23" value="0x16">CHANNEL23</option>
+                    <option id="option24" value="0x17">CHANNEL24</option>
+                    <option id="option25" value="0x18">CHANNEL25</option>
+                    <option id="option26" value="0x19">CHANNEL26</option>
+                    <option id="option27" value="0x1a">CHANNEL27</option>
+                    <option id="option28" value="0x1b">CHANNEL28</option>
+                    <option id="option29" value="0x1c">CHANNEL29</option>
+                    <option id="option30" value="0x1d">CHANNEL30</option>
+                    <option id="option31" value="0x1e">CHANNEL31</option>
+                    <option id="option32" value="0x1f">CHANNEL32</option>
+                </select>
+            </td>
+            <td class="checkboxCell">
+                <input type="checkbox" id="assCheck3">
+            </td>
+        </tr>
+        <tr class="tabRow">
+            <td class="knobCell">4</td>
+            <td class="inputCell">
+                <input type="text" class="userInput" placeholder="CHANNEL A" maxlength="9">
+            </td>
+            <td class="selectCell">
+                <select class="selectBox" id="assKnob4" data-topic="4">
+                    <option id="option1" value="0x00">CHANNEL01</option>
+                    <option id="option2" value="0x01">CHANNEL02</option>
+                    <option id="option3" value="0x02">CHANNEL03</option>
+                    <option id="option4" value="0x03">CHANNEL04</option>
+                    <option id="option5" value="0x04">CHANNEL05</option>
+                    <option id="option6" value="0x05">CHANNEL06</option>
+                    <option id="option7" value="0x06">CHANNEL07</option>
+                    <option id="option8" value="0x07">CHANNEL08</option>
+                    <option id="option9" value="0x08">CHANNEL09</option>
+                    <option id="option10" value="0x09">CHANNEL10</option>
+                    <option id="option11" value="0x0a">CHANNEL11</option>
+                    <option id="option12" value="0x0b">CHANNEL12</option>
+                    <option id="option13" value="0x0c">CHANNEL13</option>
+                    <option id="option14" value="0x0d">CHANNEL14</option>
+                    <option id="option15" value="0x0e">CHANNEL15</option>
+                    <option id="option16" value="0x0f">CHANNEL16</option>
+                    <option id="option17" value="0x10">CHANNEL17</option>
+                    <option id="option18" value="0x11">CHANNEL18</option>
+                    <option id="option19" value="0x12">CHANNEL19</option>
+                    <option id="option20" value="0x13">CHANNEL20</option>
+                    <option id="option21" value="0x14">CHANNEL21</option>
+                    <option id="option22" value="0x15">CHANNEL22</option>
+                    <option id="option23" value="0x16">CHANNEL23</option>
+                    <option id="option24" value="0x17">CHANNEL24</option>
+                    <option id="option25" value="0x18">CHANNEL25</option>
+                    <option id="option26" value="0x19">CHANNEL26</option>
+                    <option id="option27" value="0x1a">CHANNEL27</option>
+                    <option id="option28" value="0x1b">CHANNEL28</option>
+                    <option id="option29" value="0x1c">CHANNEL29</option>
+                    <option id="option30" value="0x1d">CHANNEL30</option>
+                    <option id="option31" value="0x1e">CHANNEL31</option>
+                    <option id="option32" value="0x1f">CHANNEL32</option>
+                </select>
+            </td>
+            <td class="checkboxCell">
+                <input type="checkbox" id="assCheck4">
+            </td>
+        </tr>
+        <tr class="tabRow">
+            <td class="knobCell">5</td>
+            <td class="inputCell">
+                <input type="text" class="userInput" placeholder="CHANNEL A" maxlength="9">
+            </td>
+            <td class="selectCell">
+                <select class="selectBox" id="assKnob5" data-topic="5">
+                    <option id="option1" value="0x00">CHANNEL01</option>
+                    <option id="option2" value="0x01">CHANNEL02</option>
+                    <option id="option3" value="0x02">CHANNEL03</option>
+                    <option id="option4" value="0x03">CHANNEL04</option>
+                    <option id="option5" value="0x04">CHANNEL05</option>
+                    <option id="option6" value="0x05">CHANNEL06</option>
+                    <option id="option7" value="0x06">CHANNEL07</option>
+                    <option id="option8" value="0x07">CHANNEL08</option>
+                    <option id="option9" value="0x08">CHANNEL09</option>
+                    <option id="option10" value="0x09">CHANNEL10</option>
+                    <option id="option11" value="0x0a">CHANNEL11</option>
+                    <option id="option12" value="0x0b">CHANNEL12</option>
+                    <option id="option13" value="0x0c">CHANNEL13</option>
+                    <option id="option14" value="0x0d">CHANNEL14</option>
+                    <option id="option15" value="0x0e">CHANNEL15</option>
+                    <option id="option16" value="0x0f">CHANNEL16</option>
+                    <option id="option17" value="0x10">CHANNEL17</option>
+                    <option id="option18" value="0x11">CHANNEL18</option>
+                    <option id="option19" value="0x12">CHANNEL19</option>
+                    <option id="option20" value="0x13">CHANNEL20</option>
+                    <option id="option21" value="0x14">CHANNEL21</option>
+                    <option id="option22" value="0x15">CHANNEL22</option>
+                    <option id="option23" value="0x16">CHANNEL23</option>
+                    <option id="option24" value="0x17">CHANNEL24</option>
+                    <option id="option25" value="0x18">CHANNEL25</option>
+                    <option id="option26" value="0x19">CHANNEL26</option>
+                    <option id="option27" value="0x1a">CHANNEL27</option>
+                    <option id="option28" value="0x1b">CHANNEL28</option>
+                    <option id="option29" value="0x1c">CHANNEL29</option>
+                    <option id="option30" value="0x1d">CHANNEL30</option>
+                    <option id="option31" value="0x1e">CHANNEL31</option>
+                    <option id="option32" value="0x1f">CHANNEL32</option>
+                </select>
+            </td>
+            <td class="checkboxCell">
+                <input type="checkbox" id="assCheck5">
+            </td>
+        </tr>
+        <tr class="tabRow">
+            <td class="knobCell">6</td>
+            <td class="inputCell">
+                <input type="text" class="userInput" placeholder="CHANNEL A" maxlength="9">
+            </td>
+            <td class="selectCell">
+                <select class="selectBox" id="assKnob6" data-topic="6">
+                    <option id="option1" value="0x00">CHANNEL01</option>
+                    <option id="option2" value="0x01">CHANNEL02</option>
+                    <option id="option3" value="0x02">CHANNEL03</option>
+                    <option id="option4" value="0x03">CHANNEL04</option>
+                    <option id="option5" value="0x04">CHANNEL05</option>
+                    <option id="option6" value="0x05">CHANNEL06</option>
+                    <option id="option7" value="0x06">CHANNEL07</option>
+                    <option id="option8" value="0x07">CHANNEL08</option>
+                    <option id="option9" value="0x08">CHANNEL09</option>
+                    <option id="option10" value="0x09">CHANNEL10</option>
+                    <option id="option11" value="0x0a">CHANNEL11</option>
+                    <option id="option12" value="0x0b">CHANNEL12</option>
+                    <option id="option13" value="0x0c">CHANNEL13</option>
+                    <option id="option14" value="0x0d">CHANNEL14</option>
+                    <option id="option15" value="0x0e">CHANNEL15</option>
+                    <option id="option16" value="0x0f">CHANNEL16</option>
+                    <option id="option17" value="0x10">CHANNEL17</option>
+                    <option id="option18" value="0x11">CHANNEL18</option>
+                    <option id="option19" value="0x12">CHANNEL19</option>
+                    <option id="option20" value="0x13">CHANNEL20</option>
+                    <option id="option21" value="0x14">CHANNEL21</option>
+                    <option id="option22" value="0x15">CHANNEL22</option>
+                    <option id="option23" value="0x16">CHANNEL23</option>
+                    <option id="option24" value="0x17">CHANNEL24</option>
+                    <option id="option25" value="0x18">CHANNEL25</option>
+                    <option id="option26" value="0x19">CHANNEL26</option>
+                    <option id="option27" value="0x1a">CHANNEL27</option>
+                    <option id="option28" value="0x1b">CHANNEL28</option>
+                    <option id="option29" value="0x1c">CHANNEL29</option>
+                    <option id="option30" value="0x1d">CHANNEL30</option>
+                    <option id="option31" value="0x1e">CHANNEL31</option>
+                    <option id="option32" value="0x1f">CHANNEL32</option>
+                </select>
+            </td>
+            <td class="checkboxCell">
+                <input type="checkbox" id="assCheck6">
+            </td>
+        </tr>
+        <tr class="tabRow">
+            <td class="knobCell">7</td>
+            <td class="inputCell">
+                <input type="text" class="userInput" placeholder="CHANNEL A" maxlength="9">
+            </td>
+            <td class="selectCell">
+                <select class="selectBox" id="assKnob7" data-topic="7">
+                    <option id="option1" value="0x00">CHANNEL01</option>
+                    <option id="option2" value="0x01">CHANNEL02</option>
+                    <option id="option3" value="0x02">CHANNEL03</option>
+                    <option id="option4" value="0x03">CHANNEL04</option>
+                    <option id="option5" value="0x04">CHANNEL05</option>
+                    <option id="option6" value="0x05">CHANNEL06</option>
+                    <option id="option7" value="0x06">CHANNEL07</option>
+                    <option id="option8" value="0x07">CHANNEL08</option>
+                    <option id="option9" value="0x08">CHANNEL09</option>
+                    <option id="option10" value="0x09">CHANNEL10</option>
+                    <option id="option11" value="0x0a">CHANNEL11</option>
+                    <option id="option12" value="0x0b">CHANNEL12</option>
+                    <option id="option13" value="0x0c">CHANNEL13</option>
+                    <option id="option14" value="0x0d">CHANNEL14</option>
+                    <option id="option15" value="0x0e">CHANNEL15</option>
+                    <option id="option16" value="0x0f">CHANNEL16</option>
+                    <option id="option17" value="0x10">CHANNEL17</option>
+                    <option id="option18" value="0x11">CHANNEL18</option>
+                    <option id="option19" value="0x12">CHANNEL19</option>
+                    <option id="option20" value="0x13">CHANNEL20</option>
+                    <option id="option21" value="0x14">CHANNEL21</option>
+                    <option id="option22" value="0x15">CHANNEL22</option>
+                    <option id="option23" value="0x16">CHANNEL23</option>
+                    <option id="option24" value="0x17">CHANNEL24</option>
+                    <option id="option25" value="0x18">CHANNEL25</option>
+                    <option id="option26" value="0x19">CHANNEL26</option>
+                    <option id="option27" value="0x1a">CHANNEL27</option>
+                    <option id="option28" value="0x1b">CHANNEL28</option>
+                    <option id="option29" value="0x1c">CHANNEL29</option>
+                    <option id="option30" value="0x1d">CHANNEL30</option>
+                    <option id="option31" value="0x1e">CHANNEL31</option>
+                    <option id="option32" value="0x1f">CHANNEL32</option>
+                </select>
+            </td>
+            <td class="checkboxCell">
+                <input type="checkbox" id="assCheck7">
+            </td>
+        </tr>
+        <tr class="tabRow">
+            <td class="knobCell">8</td>
+            <td class="inputCell">
+                <input type="text" class="userInput" placeholder="CHANNEL A" maxlength="9">
+            </td>
+            <td class="selectCell">
+                <select class="selectBox" id="assKnob8" data-topic="8">
+                    <option id="option1" value="0x00">CHANNEL01</option>
+                    <option id="option2" value="0x01">CHANNEL02</option>
+                    <option id="option3" value="0x02">CHANNEL03</option>
+                    <option id="option4" value="0x03">CHANNEL04</option>
+                    <option id="option5" value="0x04">CHANNEL05</option>
+                    <option id="option6" value="0x05">CHANNEL06</option>
+                    <option id="option7" value="0x06">CHANNEL07</option>
+                    <option id="option8" value="0x07">CHANNEL08</option>
+                    <option id="option9" value="0x08">CHANNEL09</option>
+                    <option id="option10" value="0x09">CHANNEL10</option>
+                    <option id="option11" value="0x0a">CHANNEL11</option>
+                    <option id="option12" value="0x0b">CHANNEL12</option>
+                    <option id="option13" value="0x0c">CHANNEL13</option>
+                    <option id="option14" value="0x0d">CHANNEL14</option>
+                    <option id="option15" value="0x0e">CHANNEL15</option>
+                    <option id="option16" value="0x0f">CHANNEL16</option>
+                    <option id="option17" value="0x10">CHANNEL17</option>
+                    <option id="option18" value="0x11">CHANNEL18</option>
+                    <option id="option19" value="0x12">CHANNEL19</option>
+                    <option id="option20" value="0x13">CHANNEL20</option>
+                    <option id="option21" value="0x14">CHANNEL21</option>
+                    <option id="option22" value="0x15">CHANNEL22</option>
+                    <option id="option23" value="0x16">CHANNEL23</option>
+                    <option id="option24" value="0x17">CHANNEL24</option>
+                    <option id="option25" value="0x18">CHANNEL25</option>
+                    <option id="option26" value="0x19">CHANNEL26</option>
+                    <option id="option27" value="0x1a">CHANNEL27</option>
+                    <option id="option28" value="0x1b">CHANNEL28</option>
+                    <option id="option29" value="0x1c">CHANNEL29</option>
+                    <option id="option30" value="0x1d">CHANNEL30</option>
+                    <option id="option31" value="0x1e">CHANNEL31</option>
+                    <option id="option32" value="0x1f">CHANNEL32</option>
+                </select>
+            </td>
+            <td class="checkboxCell">
+                <input type="checkbox" id="assCheck8">
+            </td>
+        </tr>
+        <tr class="tabRow">
+            <td class="knobCell">9</td>
+            <td class="inputCell">
+                <input type="text" class="userInput" placeholder="CHANNEL A" maxlength="9">
+            </td>
+            <td class="selectCell">
+                <select class="selectBox" id="assKnob9" data-topic="9">
+                    <option id="option1" value="0x00">CHANNEL01</option>
+                    <option id="option2" value="0x01">CHANNEL02</option>
+                    <option id="option3" value="0x02">CHANNEL03</option>
+                    <option id="option4" value="0x03">CHANNEL04</option>
+                    <option id="option5" value="0x04">CHANNEL05</option>
+                    <option id="option6" value="0x05">CHANNEL06</option>
+                    <option id="option7" value="0x06">CHANNEL07</option>
+                    <option id="option8" value="0x07">CHANNEL08</option>
+                    <option id="option9" value="0x08">CHANNEL09</option>
+                    <option id="option10" value="0x09">CHANNEL10</option>
+                    <option id="option11" value="0x0a">CHANNEL11</option>
+                    <option id="option12" value="0x0b">CHANNEL12</option>
+                    <option id="option13" value="0x0c">CHANNEL13</option>
+                    <option id="option14" value="0x0d">CHANNEL14</option>
+                    <option id="option15" value="0x0e">CHANNEL15</option>
+                    <option id="option16" value="0x0f">CHANNEL16</option>
+                    <option id="option17" value="0x10">CHANNEL17</option>
+                    <option id="option18" value="0x11">CHANNEL18</option>
+                    <option id="option19" value="0x12">CHANNEL19</option>
+                    <option id="option20" value="0x13">CHANNEL20</option>
+                    <option id="option21" value="0x14">CHANNEL21</option>
+                    <option id="option22" value="0x15">CHANNEL22</option>
+                    <option id="option23" value="0x16">CHANNEL23</option>
+                    <option id="option24" value="0x17">CHANNEL24</option>
+                    <option id="option25" value="0x18">CHANNEL25</option>
+                    <option id="option26" value="0x19">CHANNEL26</option>
+                    <option id="option27" value="0x1a">CHANNEL27</option>
+                    <option id="option28" value="0x1b">CHANNEL28</option>
+                    <option id="option29" value="0x1c">CHANNEL29</option>
+                    <option id="option30" value="0x1d">CHANNEL30</option>
+                    <option id="option31" value="0x1e">CHANNEL31</option>
+                    <option id="option32" value="0x1f">CHANNEL32</option>
+                </select>
+            </td>
+            <td class="checkboxCell">
+                <input type="checkbox" id="assCheck9">
+            </td>
+        </tr>
+        <tr class="tabRow">
+            <td class="knobCell">10</td>
+            <td class="inputCell">
+                <input type="text" class="userInput" placeholder="CHANNEL A" maxlength="9">
+            </td>
+            <td class="selectCell">
+                <select class="selectBox" id="assKnob10" data-topic="10">
+                    <option id="option1" value="0x00">CHANNEL01</option>
+                    <option id="option2" value="0x01">CHANNEL02</option>
+                    <option id="option3" value="0x02">CHANNEL03</option>
+                    <option id="option4" value="0x03">CHANNEL04</option>
+                    <option id="option5" value="0x04">CHANNEL05</option>
+                    <option id="option6" value="0x05">CHANNEL06</option>
+                    <option id="option7" value="0x06">CHANNEL07</option>
+                    <option id="option8" value="0x07">CHANNEL08</option>
+                    <option id="option9" value="0x08">CHANNEL09</option>
+                    <option id="option10" value="0x09">CHANNEL10</option>
+                    <option id="option11" value="0x0a">CHANNEL11</option>
+                    <option id="option12" value="0x0b">CHANNEL12</option>
+                    <option id="option13" value="0x0c">CHANNEL13</option>
+                    <option id="option14" value="0x0d">CHANNEL14</option>
+                    <option id="option15" value="0x0e">CHANNEL15</option>
+                    <option id="option16" value="0x0f">CHANNEL16</option>
+                    <option id="option17" value="0x10">CHANNEL17</option>
+                    <option id="option18" value="0x11">CHANNEL18</option>
+                    <option id="option19" value="0x12">CHANNEL19</option>
+                    <option id="option20" value="0x13">CHANNEL20</option>
+                    <option id="option21" value="0x14">CHANNEL21</option>
+                    <option id="option22" value="0x15">CHANNEL22</option>
+                    <option id="option23" value="0x16">CHANNEL23</option>
+                    <option id="option24" value="0x17">CHANNEL24</option>
+                    <option id="option25" value="0x18">CHANNEL25</option>
+                    <option id="option26" value="0x19">CHANNEL26</option>
+                    <option id="option27" value="0x1a">CHANNEL27</option>
+                    <option id="option28" value="0x1b">CHANNEL28</option>
+                    <option id="option29" value="0x1c">CHANNEL29</option>
+                    <option id="option30" value="0x1d">CHANNEL30</option>
+                    <option id="option31" value="0x1e">CHANNEL31</option>
+                    <option id="option32" value="0x1f">CHANNEL32</option>
+                </select>
+            </td>
+            <td class="checkboxCell">
+                <input type="checkbox" id="assCheck10">
+            </td>
+        </tr>
+        <tr class="tabRow">
+            <td class="knobCell">11</td>
+            <td class="inputCell">
+                <input type="text" class="userInput" placeholder="CHANNEL A" maxlength="9">
+            </td>
+            <td class="selectCell">
+                <select class="selectBox" id="assKnob11" data-topic="11">
+                    <option id="option1" value="0x00">CHANNEL01</option>
+                    <option id="option2" value="0x01">CHANNEL02</option>
+                    <option id="option3" value="0x02">CHANNEL03</option>
+                    <option id="option4" value="0x03">CHANNEL04</option>
+                    <option id="option5" value="0x04">CHANNEL05</option>
+                    <option id="option6" value="0x05">CHANNEL06</option>
+                    <option id="option7" value="0x06">CHANNEL07</option>
+                    <option id="option8" value="0x07">CHANNEL08</option>
+                    <option id="option9" value="0x08">CHANNEL09</option>
+                    <option id="option10" value="0x09">CHANNEL10</option>
+                    <option id="option11" value="0x0a">CHANNEL11</option>
+                    <option id="option12" value="0x0b">CHANNEL12</option>
+                    <option id="option13" value="0x0c">CHANNEL13</option>
+                    <option id="option14" value="0x0d">CHANNEL14</option>
+                    <option id="option15" value="0x0e">CHANNEL15</option>
+                    <option id="option16" value="0x0f">CHANNEL16</option>
+                    <option id="option17" value="0x10">CHANNEL17</option>
+                    <option id="option18" value="0x11">CHANNEL18</option>
+                    <option id="option19" value="0x12">CHANNEL19</option>
+                    <option id="option20" value="0x13">CHANNEL20</option>
+                    <option id="option21" value="0x14">CHANNEL21</option>
+                    <option id="option22" value="0x15">CHANNEL22</option>
+                    <option id="option23" value="0x16">CHANNEL23</option>
+                    <option id="option24" value="0x17">CHANNEL24</option>
+                    <option id="option25" value="0x18">CHANNEL25</option>
+                    <option id="option26" value="0x19">CHANNEL26</option>
+                    <option id="option27" value="0x1a">CHANNEL27</option>
+                    <option id="option28" value="0x1b">CHANNEL28</option>
+                    <option id="option29" value="0x1c">CHANNEL29</option>
+                    <option id="option30" value="0x1d">CHANNEL30</option>
+                    <option id="option31" value="0x1e">CHANNEL31</option>
+                    <option id="option32" value="0x1f">CHANNEL32</option>
+                </select>
+            </td>
+            <td class="checkboxCell">
+                <input type="checkbox" id="assCheck11">
+            </td>
+        </tr>
+        <tr class="tabRow">
+            <td class="knobCell">12</td>
+            <td class="inputCell">
+                <input type="text" class="userInput" placeholder="CHANNEL A" maxlength="9">
+            </td>
+            <td class="selectCell">
+                <select class="selectBox" id="assKnob12" data-topic="12">
+                    <option id="option1" value="0x00">CHANNEL01</option>
+                    <option id="option2" value="0x01">CHANNEL02</option>
+                    <option id="option3" value="0x02">CHANNEL03</option>
+                    <option id="option4" value="0x03">CHANNEL04</option>
+                    <option id="option5" value="0x04">CHANNEL05</option>
+                    <option id="option6" value="0x05">CHANNEL06</option>
+                    <option id="option7" value="0x06">CHANNEL07</option>
+                    <option id="option8" value="0x07">CHANNEL08</option>
+                    <option id="option9" value="0x08">CHANNEL09</option>
+                    <option id="option10" value="0x09">CHANNEL10</option>
+                    <option id="option11" value="0x0a">CHANNEL11</option>
+                    <option id="option12" value="0x0b">CHANNEL12</option>
+                    <option id="option13" value="0x0c">CHANNEL13</option>
+                    <option id="option14" value="0x0d">CHANNEL14</option>
+                    <option id="option15" value="0x0e">CHANNEL15</option>
+                    <option id="option16" value="0x0f">CHANNEL16</option>
+                    <option id="option17" value="0x10">CHANNEL17</option>
+                    <option id="option18" value="0x11">CHANNEL18</option>
+                    <option id="option19" value="0x12">CHANNEL19</option>
+                    <option id="option20" value="0x13">CHANNEL20</option>
+                    <option id="option21" value="0x14">CHANNEL21</option>
+                    <option id="option22" value="0x15">CHANNEL22</option>
+                    <option id="option23" value="0x16">CHANNEL23</option>
+                    <option id="option24" value="0x17">CHANNEL24</option>
+                    <option id="option25" value="0x18">CHANNEL25</option>
+                    <option id="option26" value="0x19">CHANNEL26</option>
+                    <option id="option27" value="0x1a">CHANNEL27</option>
+                    <option id="option28" value="0x1b">CHANNEL28</option>
+                    <option id="option29" value="0x1c">CHANNEL29</option>
+                    <option id="option30" value="0x1d">CHANNEL30</option>
+                    <option id="option31" value="0x1e">CHANNEL31</option>
+                    <option id="option32" value="0x1f">CHANNEL32</option>
+                </select>
+            </td>
+            <td class="checkboxCell">
+                <input type="checkbox" id="assCheck12">
+            </td>
+        </tr>
+        <tr class="tabRow">
+            <td class="knobCell">13</td>
+            <td class="inputCell">
+                <input type="text" class="userInput" placeholder="CHANNEL A" maxlength="9">
+            </td>
+            <td class="selectCell">
+                <select class="selectBox" id="assKnob13" data-topic="13">
+                    <option id="option1" value="0x00">CHANNEL01</option>
+                    <option id="option2" value="0x01">CHANNEL02</option>
+                    <option id="option3" value="0x02">CHANNEL03</option>
+                    <option id="option4" value="0x03">CHANNEL04</option>
+                    <option id="option5" value="0x04">CHANNEL05</option>
+                    <option id="option6" value="0x05">CHANNEL06</option>
+                    <option id="option7" value="0x06">CHANNEL07</option>
+                    <option id="option8" value="0x07">CHANNEL08</option>
+                    <option id="option9" value="0x08">CHANNEL09</option>
+                    <option id="option10" value="0x09">CHANNEL10</option>
+                    <option id="option11" value="0x0a">CHANNEL11</option>
+                    <option id="option12" value="0x0b">CHANNEL12</option>
+                    <option id="option13" value="0x0c">CHANNEL13</option>
+                    <option id="option14" value="0x0d">CHANNEL14</option>
+                    <option id="option15" value="0x0e">CHANNEL15</option>
+                    <option id="option16" value="0x0f">CHANNEL16</option>
+                    <option id="option17" value="0x10">CHANNEL17</option>
+                    <option id="option18" value="0x11">CHANNEL18</option>
+                    <option id="option19" value="0x12">CHANNEL19</option>
+                    <option id="option20" value="0x13">CHANNEL20</option>
+                    <option id="option21" value="0x14">CHANNEL21</option>
+                    <option id="option22" value="0x15">CHANNEL22</option>
+                    <option id="option23" value="0x16">CHANNEL23</option>
+                    <option id="option24" value="0x17">CHANNEL24</option>
+                    <option id="option25" value="0x18">CHANNEL25</option>
+                    <option id="option26" value="0x19">CHANNEL26</option>
+                    <option id="option27" value="0x1a">CHANNEL27</option>
+                    <option id="option28" value="0x1b">CHANNEL28</option>
+                    <option id="option29" value="0x1c">CHANNEL29</option>
+                    <option id="option30" value="0x1d">CHANNEL30</option>
+                    <option id="option31" value="0x1e">CHANNEL31</option>
+                    <option id="option32" value="0x1f">CHANNEL32</option>
+                </select>
+            </td>
+            <td class="checkboxCell">
+                <input type="checkbox" id="assCheck13">
+            </td>
+        </tr>
+        <tr class="tabRow">
+            <td class="knobCell">14</td>
+            <td class="inputCell">
+                <input type="text" class="userInput" placeholder="CHANNEL A" maxlength="9">
+            </td>
+            <td class="selectCell">
+                <select class="selectBox" id="assKnob14" data-topic="14">
+                    <option id="option1" value="0x00">CHANNEL01</option>
+                    <option id="option2" value="0x01">CHANNEL02</option>
+                    <option id="option3" value="0x02">CHANNEL03</option>
+                    <option id="option4" value="0x03">CHANNEL04</option>
+                    <option id="option5" value="0x04">CHANNEL05</option>
+                    <option id="option6" value="0x05">CHANNEL06</option>
+                    <option id="option7" value="0x06">CHANNEL07</option>
+                    <option id="option8" value="0x07">CHANNEL08</option>
+                    <option id="option9" value="0x08">CHANNEL09</option>
+                    <option id="option10" value="0x09">CHANNEL10</option>
+                    <option id="option11" value="0x0a">CHANNEL11</option>
+                    <option id="option12" value="0x0b">CHANNEL12</option>
+                    <option id="option13" value="0x0c">CHANNEL13</option>
+                    <option id="option14" value="0x0d">CHANNEL14</option>
+                    <option id="option15" value="0x0e">CHANNEL15</option>
+                    <option id="option16" value="0x0f">CHANNEL16</option>
+                    <option id="option17" value="0x10">CHANNEL17</option>
+                    <option id="option18" value="0x11">CHANNEL18</option>
+                    <option id="option19" value="0x12">CHANNEL19</option>
+                    <option id="option20" value="0x13">CHANNEL20</option>
+                    <option id="option21" value="0x14">CHANNEL21</option>
+                    <option id="option22" value="0x15">CHANNEL22</option>
+                    <option id="option23" value="0x16">CHANNEL23</option>
+                    <option id="option24" value="0x17">CHANNEL24</option>
+                    <option id="option25" value="0x18">CHANNEL25</option>
+                    <option id="option26" value="0x19">CHANNEL26</option>
+                    <option id="option27" value="0x1a">CHANNEL27</option>
+                    <option id="option28" value="0x1b">CHANNEL28</option>
+                    <option id="option29" value="0x1c">CHANNEL29</option>
+                    <option id="option30" value="0x1d">CHANNEL30</option>
+                    <option id="option31" value="0x1e">CHANNEL31</option>
+                    <option id="option32" value="0x1f">CHANNEL32</option>
+                </select>
+            </td>
+            <td class="checkboxCell">
+                <input type="checkbox" id="assCheck14">
+            </td>
+        </tr>
+        <tr class="tabRow">
+            <td class="knobCell">15</td>
+            <td class="inputCell">
+                <input type="text" class="userInput" placeholder="CHANNEL A" maxlength="9">
+            </td>
+            <td class="selectCell">
+                <select class="selectBox" id="assKnob15" data-topic="15">
+                    <option id="option1" value="0x00">CHANNEL01</option>
+                    <option id="option2" value="0x01">CHANNEL02</option>
+                    <option id="option3" value="0x02">CHANNEL03</option>
+                    <option id="option4" value="0x03">CHANNEL04</option>
+                    <option id="option5" value="0x04">CHANNEL05</option>
+                    <option id="option6" value="0x05">CHANNEL06</option>
+                    <option id="option7" value="0x06">CHANNEL07</option>
+                    <option id="option8" value="0x07">CHANNEL08</option>
+                    <option id="option9" value="0x08">CHANNEL09</option>
+                    <option id="option10" value="0x09">CHANNEL10</option>
+                    <option id="option11" value="0x0a">CHANNEL11</option>
+                    <option id="option12" value="0x0b">CHANNEL12</option>
+                    <option id="option13" value="0x0c">CHANNEL13</option>
+                    <option id="option14" value="0x0d">CHANNEL14</option>
+                    <option id="option15" value="0x0e">CHANNEL15</option>
+                    <option id="option16" value="0x0f">CHANNEL16</option>
+                    <option id="option17" value="0x10">CHANNEL17</option>
+                    <option id="option18" value="0x11">CHANNEL18</option>
+                    <option id="option19" value="0x12">CHANNEL19</option>
+                    <option id="option20" value="0x13">CHANNEL20</option>
+                    <option id="option21" value="0x14">CHANNEL21</option>
+                    <option id="option22" value="0x15">CHANNEL22</option>
+                    <option id="option23" value="0x16">CHANNEL23</option>
+                    <option id="option24" value="0x17">CHANNEL24</option>
+                    <option id="option25" value="0x18">CHANNEL25</option>
+                    <option id="option26" value="0x19">CHANNEL26</option>
+                    <option id="option27" value="0x1a">CHANNEL27</option>
+                    <option id="option28" value="0x1b">CHANNEL28</option>
+                    <option id="option29" value="0x1c">CHANNEL29</option>
+                    <option id="option30" value="0x1d">CHANNEL30</option>
+                    <option id="option31" value="0x1e">CHANNEL31</option>
+                    <option id="option32" value="0x1f">CHANNEL32</option>
+                </select>
+            </td>
+            <td class="checkboxCell">
+                <input type="checkbox" id="assCheck15">
+            </td>
+        </tr>
+        <tr class="tabRow">
+            <td class="knobCell">16</td>
+            <td class="inputCell">
+                <input type="text" class="userInput" placeholder="CHANNEL A" maxlength="9">
+            </td>
+            <td class="selectCell">
+                <select class="selectBox" id="assKnob16" data-topic="16">
+                    <option id="option1" value="0x00">CHANNEL01</option>
+                    <option id="option2" value="0x01">CHANNEL02</option>
+                    <option id="option3" value="0x02">CHANNEL03</option>
+                    <option id="option4" value="0x03">CHANNEL04</option>
+                    <option id="option5" value="0x04">CHANNEL05</option>
+                    <option id="option6" value="0x05">CHANNEL06</option>
+                    <option id="option7" value="0x06">CHANNEL07</option>
+                    <option id="option8" value="0x07">CHANNEL08</option>
+                    <option id="option9" value="0x08">CHANNEL09</option>
+                    <option id="option10" value="0x09">CHANNEL10</option>
+                    <option id="option11" value="0x0a">CHANNEL11</option>
+                    <option id="option12" value="0x0b">CHANNEL12</option>
+                    <option id="option13" value="0x0c">CHANNEL13</option>
+                    <option id="option14" value="0x0d">CHANNEL14</option>
+                    <option id="option15" value="0x0e">CHANNEL15</option>
+                    <option id="option16" value="0x0f">CHANNEL16</option>
+                    <option id="option17" value="0x10">CHANNEL17</option>
+                    <option id="option18" value="0x11">CHANNEL18</option>
+                    <option id="option19" value="0x12">CHANNEL19</option>
+                    <option id="option20" value="0x13">CHANNEL20</option>
+                    <option id="option21" value="0x14">CHANNEL21</option>
+                    <option id="option22" value="0x15">CHANNEL22</option>
+                    <option id="option23" value="0x16">CHANNEL23</option>
+                    <option id="option24" value="0x17">CHANNEL24</option>
+                    <option id="option25" value="0x18">CHANNEL25</option>
+                    <option id="option26" value="0x19">CHANNEL26</option>
+                    <option id="option27" value="0x1a">CHANNEL27</option>
+                    <option id="option28" value="0x1b">CHANNEL28</option>
+                    <option id="option29" value="0x1c">CHANNEL29</option>
+                    <option id="option30" value="0x1d">CHANNEL30</option>
+                    <option id="option31" value="0x1e">CHANNEL31</option>
+                    <option id="option32" value="0x1f">CHANNEL32</option>
+                </select>
+            </td>
+            <td class="checkboxCell">
+                <input type="checkbox" id="assCheck16">
+            </td>
+        </tr>
+    </table>
+        <span id="newSub">
+            <button id="buildNew">BUILD NEW SUBMIX</button>
+        </span>
+    <table id="submixTable">
+        <tr id="submixHead">
+            <th>SUBMIX NAME</th>
+            <th>EDIT</th>
+            <th>ASSIGN</th>
+        </tr>
+        <tr id="submixOver">
+            <td class="inputCell">
+                <input type="text" class="submixInput" placeholder="SUBMIX A" maxlength="9">
+            </td>
+            <td class="editButton">
+                <button id="editSubmix">EDIT SUBMIX</button>
+            </td>
+            <td>
+                <select class="selectSubmix">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                    <option>6</option>
+                    <option>7</option>
+                    <option>8</option>
+                    <option>9</option>
+                    <option>10</option>
+                    <option>11</option>
+                    <option>12</option>
+                    <option>13</option>
+                    <option>14</option>
+                    <option>15</option>
+                    <option>16</option>
+                </select>
+            </td>
+        </tr>
+        <tr id="submixOver">
+            <td class="inputCell">
+                <input type="text" class="submixInput" placeholder="SUBMIX A" maxlength="9">
+            </td>
+            <td class="editButton">
+                <button id="editSubmix">EDIT SUBMIX</button>
+            </td>
+            <td>
+                <select class="selectSubmix">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                    <option>6</option>
+                    <option>7</option>
+                    <option>8</option>
+                    <option>9</option>
+                    <option>10</option>
+                    <option>11</option>
+                    <option>12</option>
+                    <option>13</option>
+                    <option>14</option>
+                    <option>15</option>
+                    <option>16</option>
+                </select>
+            </td>
+        </tr>
+    </table>
+<!-- </div> -->
+</div>
+
+</section>
+
+</body>
+</html>
+

@@ -1,0 +1,373 @@
+/*  Colours for Syntax Highlighted pre's */
+/*@import url('https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap');*/
+
+.syntax-highlight {color:white;background-color:gray;padding:5px 10px;}
+.syntax-highlight > .key {color:#ffbf35}
+.syntax-highlight > .string {color:#5dff39;}
+.syntax-highlight > .number {color:#70aeff;}
+.syntax-highlight > .boolean {color:#b993ff;}
+
+input[type=range].input-knob {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    border: none;
+    box-sizing: border-box;
+    overflow: hidden;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-position: 0px 0%;
+    background-color: transparent;
+    touch-action: none;
+}
+
+input[type=range].input-knob::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    opacity: 0;
+}
+
+input[type=range].input-knob::-moz-range-thumb {
+    -moz-appearance: none;
+    height: 0;
+    border: none;
+}
+
+input[type=range].input-knob::-moz-range-track {
+    -moz-appearance: none;
+    height: 0;
+    border: none;
+}
+
+input:focus {
+    outline: none;
+}
+
+body {
+   min-width:1000px !important;
+   background-color: #073642;
+}
+
+section {
+    margin: 10px;
+    min-width: 100%;
+    height: 800px;
+    padding: 0px;
+}
+
+.mixWindow {
+    float: left;
+    position: relative;
+    width: 500px;
+    justify-content: center;
+    align-content: center;
+    height: 800px;
+    margin: 10px;
+}
+
+.mixer {
+    position: relative;
+    background-color: #3A3B3C;
+    min-width: 100%;
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    height: auto;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    border-radius: 40px;
+    border: solid 4px black;
+    font-size: 10px;
+    display: inline-block;
+}
+
+.channelname {
+    color: #B3E7F4;
+    width: 84px;
+    height: 14px;
+    line-height: 14px;
+    background-color: black;
+    margin: 8px;
+}
+
+.channelKnob {
+    width: 100px;
+    margin: 4px;
+    border: 2px solid white;
+    border-radius: 6px;
+}
+
+.input-knob {
+    margin: -6px;
+}
+
+.input-switch {
+    margin: 8px;
+}
+
+.logo {
+    position: relative;
+    justify-content: center;
+    align-content: center;
+    text-align: center;
+    display: flex;
+    margin: 2px;
+}
+
+.screen {
+    position: relative;
+    background-color: black;
+    width: 100px;
+    height: 50px;
+    transform: translateY(16px);
+    border: solid 2px black;
+    border-radius: 4px;
+    color: yellow;
+}
+
+.jack {
+    margin: 0;
+    transform: translateY(-8px);
+}
+
+#log {
+    margin: 2px;
+}
+
+.row1 {
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+.row2 {
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+.row3 {
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+.row4 {
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+.bottom {
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+.bottomrow {
+    display: flex;
+}
+
+.bottomPan {
+    width: 80px;
+}
+
+.bottomAux {
+    width: 80px;
+}
+
+.bottomMaster {
+    width: 80px;   
+}
+
+.bottomPreset {
+    width: 80px;
+    margin: 0;
+    padding: 0;
+}
+
+.bottomIntercom {
+    margin: 0;
+    padding: 0;
+    width: 80px;
+}
+
+#masterfader {
+    margin-top: -10px;
+}
+
+#masteraux {
+    margin-top: -10px;
+}
+
+#mixername {
+    width: 90px;
+    font-size: 12px;
+    text-align: center;
+    color: yellow;
+    background-color: transparent!important;
+    border-color: transparent!important;
+    outline: transparent!important;
+}
+
+/*.bottom {
+    background-color: black;
+    width: 66%;
+    margin: auto;
+    text-align: center;
+    align-content: center;
+    justify-content: center;
+    /*border-radius: 10px;
+    font-size: 10px;
+    display: flex;
+}
+*/
+
+.bottomText {
+    margin-top: 10px;
+    color: white;
+}
+
+.pad {
+    width: 200px;
+    background-color: black;
+    height: 676px;
+    margin: 5px;
+    /*display: inline;*/
+    position: relative;
+    float: left;
+}
+
+.pad2 {
+    width: 440px;
+    background-color: black;
+    height: 665px;
+    margin: 5px;
+    margin-left: 14px;
+    display: inline-block;
+    position: fixed;
+    float: left;
+    color: goldenrod;
+    padding: 5px;
+}
+
+.channelTab {
+    overflow: hidden;
+    /*border: 2px solid gray;*/
+    background-color: black;
+    color: goldenrod;
+}
+
+.channelTab button {
+    background-color: inherit;
+    color: inherit;
+    float: left;
+    outline: none;
+    border: 2px solid gray;
+    cursor: pointer;
+    padding: 6px;
+    width: 50%;
+}
+
+.channelTab button.active {
+    border-bottom: none;
+}
+
+#channelTable {
+    width: 100%;
+    font-size: 16px;
+    line-height: 16px;
+    border: 2px solid gray;
+    border-top: none;
+    border-collapse: seperate;
+    text-align: center;
+    border-spacing: 10px 15px;
+}
+
+#submixTable {
+    width: 100%;
+    text-align: center;
+    line-height: 16px;
+    font-size: 16px;
+    border-collapse: seperate;
+    border: 2px solid gray;
+    border-spacing: 0px 15px;
+    border-top: none;
+}
+
+.selectBox {
+    margin-top: -4px;
+    line-height: 14px;
+    font-size: 14px;
+    text-align: center;
+    background-color: black;
+    color: goldenrod;
+    border-color: transparent!important;
+    outline: transparent!important;
+}
+
+.userInput {
+    margin-top: -4px;
+    width: 120px;
+    text-align: center;
+    line-height: 14px;
+    font-size: 14px;
+    color: goldenrod;
+    background-color: black;
+    border-color: transparent!important;
+    outline: transparent!important;
+}
+
+#buildNew {
+    padding: 8px;
+    background-color: black;
+    width: 100%;
+    font-size: 16px;
+    line-height: 16px;
+    color: goldenrod;
+    outline: none;
+    text-align: center;
+    cursor: pointer;
+    border: 2px solid goldenrod;
+    border-left: none;
+    border-right: none;
+}
+
+.submixInput {
+    margin-top: -4px;
+    width: 120px;
+    text-align: center;
+    line-height: 14px;
+    font-size: 14px;
+    color: goldenrod;
+    background-color: black;
+    border-color: transparent!important;
+    outline: transparent!important;
+}
+
+#editSubmix {
+    font-size: 14px;
+    line-height: 14px;
+    background-color: black;
+    color: goldenrod;
+    outline: transparent !important;
+    border-color: goldenrod;
+}
+
+#newSub {
+    padding-top: 10px;
+    width: 99%;
+    display: inline-block;
+    border-left: 2px solid gray;
+    border-right: 2px solid gray;
+}
+
+.selectSubmix {
+    margin-top: -4px;
+    line-height: 14px;
+    font-size: 14px;
+    text-align: center;
+    background-color: black;
+    color: goldenrod;
+    border-color: transparent!important;
+    outline: transparent!important;
+}

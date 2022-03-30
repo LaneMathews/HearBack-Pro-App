@@ -1,0 +1,16 @@
+{
+    "name": "HearBack-Pro-App",
+    "description": "Software application to allow remote user control for the Hear Back PRO system to be integrated with the Raspberry Pi.",
+    "version": "0.0.1",
+    "dependencies": {
+        "node-red-contrib-uibuilder": "4.1.4",
+        "node-red-dashboard": "3.1.2",
+        "node-red-contrib-delay-gate": "1.0.1"
+    },
+    "node-red": {
+        "settings": {
+            "flowFile": "flows.json",
+            "credentialsFile": "flows_cred.json"
+        }
+    }
+}
